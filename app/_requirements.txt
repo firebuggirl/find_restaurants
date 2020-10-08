@@ -1,0 +1,4 @@
+flask
+pymongo
+geopy==2.0.0
+

@@ -1,0 +1,32 @@
+version: '3'
+services:
+
+  flask:
+    build: .
+    container_name: flask
+    volumes:
+      - appdata:/var/www
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+    networks:
+      - backend
+  mongodb:
+    container_name: mongodbrestaurants
+    image: mongo
+    volumes:
+      - mongodbdata:/data/db
+    networks:
+      - backend
+
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  mongodbdata:
+    driver: local
+  appdata:
+    driver: local
